@@ -5,10 +5,17 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "classnames": "^2.2.3",
+    "indexof": "0.0.1",
     "meteor-node-stubs": "~0.2.0",
+    "ory-editor-core": "^0.2.24",
+    "ory-editor-plugins-divider": "^0.2.24",
+    "ory-editor-plugins-slate": "^0.2.24",
+    "ory-editor-plugins-spacer": "^0.2.24",
     "react": "^15.1.0",
     "react-addons-pure-render-mixin": "^15.1.0",
+    "react-bootstrap": "^0.31.3",
     "react-dom": "^15.1.0"
   }
 }

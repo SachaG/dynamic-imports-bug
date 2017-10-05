@@ -4,6 +4,14 @@ import classnames from 'classnames';
 
 // Task component - represents a single todo item
 export default class Task extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loaded: false,
+      component: {},
+    }
+  }
+
   toggleChecked() {
     // Set the checked property to the opposite of its current value
     Meteor.call('tasks.setChecked', this.props.task._id, !this.props.task.checked);
@@ -17,6 +25,16 @@ export default class Task extends Component {
     Meteor.call('tasks.setPrivate', this.props.task._id, ! this.props.task.private);
   }
 
+  async componentDidMount() {
+    import('./HeavyComponent');
+    const {default: HeavyComponent} = await import('./HeavyComponent.jsx');
+    console.log("HeavyComponent in Task", HeavyComponent);
+    this.setState({
+      component: HeavyComponent,
+      loaded: true,
+    })
+  }
+
   render() {
     // Give tasks a different className when they are checked off,
     // so that we can style them nicely in CSS
@@ -24,6 +42,12 @@ export default class Task extends Component {
       checked: this.props.task.checked,
       private: this.props.task.private,
     });
+
+    if (this.state.loaded) {
+      const HeavyComponent = this.state.component;
+      console.log("HeavyComponent after state", HeavyComponent);
+      return <HeavyComponent />
+    }
 
     return (
       <li className={taskClassName}>
