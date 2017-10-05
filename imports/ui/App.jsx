@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
+import './HeavyComponent.jsx';
 
 // App component - represents the whole app
 class App extends Component {
@@ -12,9 +13,9 @@ class App extends Component {
     but it does
 
     */
-    // import('./HeavyComponent.jsx').then((MyComponent) => {
-    //   console.log('HeavyComponent imported!')
-    // });
+    import('./HeavyComponent.jsx').then((MyComponent) => {
+      console.log('HeavyComponent imported!')
+    });
 
     return (
       <div className="container">
