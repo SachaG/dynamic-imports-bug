@@ -25,15 +25,15 @@ export default class Task extends Component {
     Meteor.call('tasks.setPrivate', this.props.task._id, ! this.props.task.private);
   }
 
-  async componentDidMount() {
-    import('./HeavyComponent');
-    const {default: HeavyComponent} = await import('./HeavyComponent.jsx');
-    console.log("HeavyComponent in Task", HeavyComponent);
-    this.setState({
-      component: HeavyComponent,
-      loaded: true,
-    })
-  }
+  // async componentDidMount() {
+  //   import('./HeavyComponent');
+  //   const {default: HeavyComponent} = await import('../../client/HeavyComponent.jsx');
+  //   console.log("HeavyComponent in Task", HeavyComponent);
+  //   this.setState({
+  //     component: HeavyComponent,
+  //     loaded: true,
+  //   })
+  // }
 
   render() {
     // Give tasks a different className when they are checked off,
@@ -48,6 +48,12 @@ export default class Task extends Component {
       console.log("HeavyComponent after state", HeavyComponent);
       return <HeavyComponent />
     }
+
+    // Uncommenting these three lines imports all of the dependencies of HeavyComponent
+
+    // if (2===3) {
+    //   import('./HeavyComponent.jsx');
+    // }
 
     return (
       <li className={taskClassName}>
